@@ -76,7 +76,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	var docs_count int
 	docs_count = (len(args)-4)/2
 	
-	var CustomerDocObj []CustomerDoc
+	var CustomerDocObj [] CustomerDoc
 	//checking for 2 docs
 	for i := 0; i < docs_count-1; i++ {
 		
@@ -166,6 +166,8 @@ func (t *CustomerChaincode)  GetCustomerDetails(stub shim.ChaincodeStubInterface
 		fmt.Printf("Output from obj.CUSTOMER_NAME: %s\n", obj.CUSTOMER_NAME)
 		fmt.Printf("Output from customer_dob: %s\n", customer_dob)
 		fmt.Printf("Output from obj.CUSTOMER_DOB: %s\n", obj.CUSTOMER_DOB)
+		fmt.Printf("Output from obj.CUSTOMER_DOC: %s\n", obj.CUSTOMER_DOC)
+	
 		if ((obj.CUSTOMER_ID) == customer_id){
 			CustomerTxObjects1 = append(CustomerTxObjects1,obj)
 			//requiredObj = obj
