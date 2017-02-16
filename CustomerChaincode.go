@@ -98,8 +98,8 @@ func (t *CustomerChaincode) Query(stub shim.ChaincodeStubInterface,function stri
 		return nil, errors.New("Incorrect number of arguments. Expecting 3 parameters to query")
 	}
 
-	customer_name = args[0]
-	customer_id = args[1]
+	customer_id = args[0]
+	customer_name = args[1]
 	customer_dob = args[2]
 
 	resAsBytes, err = t.GetCustomerDetails(stub, customer_name, customer_id, customer_dob)
@@ -139,13 +139,19 @@ func (t *CustomerChaincode)  GetCustomerDetails(stub shim.ChaincodeStubInterface
 	// iterate
 	for i := 0; i < length; i++ {
 		obj := CustomerTxObjects[i]
-		//if ((customer_id == obj.CUSTOMER_ID) && (customer_name == obj.CUSTOMER_NAME) && (customer_dob == obj.CUSTOMER_DOB)) {
+		//if ((customer_id == obj.CUSTOMER_ID) && (customer_name == obj.CUSTOMER_NAME) && (customer_dob == obj.CUSTOMER_DOB)) 
 		
-		//if (obj.CUSTOMER_ID == customer_id){
+		fmt.Printf("Output from customer_id: %s\n", customer_id)
+		fmt.Printf("Output from obj.CUSTOMER_ID: %s\n", obj.CUSTOMER_ID)
+		fmt.Printf("Output from customer_name: %s\n", customer_name)
+		fmt.Printf("Output from obj.CUSTOMER_NAME: %s\n", obj.CUSTOMER_NAME)
+		fmt.Printf("Output from customer_dob: %s\n", customer_dob)
+		fmt.Printf("Output from obj.CUSTOMER_DOB: %s\n", obj.CUSTOMER_DOB)
+		if ((obj.CUSTOMER_ID) == customer_id){
 			CustomerTxObjects1 = append(CustomerTxObjects1,obj)
 			//requiredObj = obj
 			objFound = true
-		//}
+		}
 	}
 
 	if objFound {
