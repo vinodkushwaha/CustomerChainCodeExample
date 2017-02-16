@@ -25,7 +25,7 @@ type CustomerData struct{
 	CUSTOMER_NAME string `json:"CUSTOMER_NAME"`
 	CUSTOMER_DOB string `json:"CUSTOMER_DOB"`
 	CUSTOMER_KYC_FLAG string `json:"CUSTOMER_KYC_FLAG"`
-	CUSTOMER_DOC []CustomerDoc `json:"CUSTOMER_DOC"`
+	CUSTOMER_DOC [] CustomerDoc `json:"CUSTOMER_DOC"`
 	}
 
 
@@ -72,7 +72,9 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	CustomerDataObj.CUSTOMER_DOB = args[2]
 	CustomerDataObj.CUSTOMER_KYC_FLAG = args[3]
 	
-	CustomerDocsObj.CUSTOMER_DOC = args[4]
+	CustomerDataObj.CUSTOMER_DOC = args[4]
+	
+	CustomerDataObj = CustomerDataObj.CUSTOMER_DOC
 	
 	Doclength := len(CustomerDocsObj)
 	
