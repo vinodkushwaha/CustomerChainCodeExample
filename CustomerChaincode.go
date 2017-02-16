@@ -60,6 +60,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	var CustomerDataObj CustomerData
 	var CustomerDataList [] CustomerData
 	//var CustomerDocsObj [] CustomerDoc
+	var doclength int
 	var err error
 
 	if len(args) != 5 {
@@ -76,7 +77,11 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	
 	//CustomerDataObj = CustomerDataObj.CUSTOMER_DOC
 	
-	Doclength := (len(args)-4 )/2
+	doclength := (len(args)-4 )/2
+	
+	for i := 0; i < length; i++ {
+	
+	}
 	
 	fmt.Printf("length of Customer Docs :%s\n", Doclength)
 
