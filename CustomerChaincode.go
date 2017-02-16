@@ -13,6 +13,11 @@ import (
 type CustomerChaincode struct {
 }
 
+type CustomerDoc struct {
+CUSTOMER_NAME string `json:"CUSTOMER_NAME"
+CUSTOMER_STRING string `json:"CUSTOMER_STRING"
+}
+
 var customerIndexTxStr = "_customerIndexTxStr"
 
 type CustomerData struct{
@@ -20,7 +25,7 @@ type CustomerData struct{
 	CUSTOMER_NAME string `json:"CUSTOMER_NAME"`
 	CUSTOMER_DOB string `json:"CUSTOMER_DOB"`
 	CUSTOMER_KYC_FLAG string `json:"CUSTOMER_KYC_FLAG"`
-	CUSTOMER_DOC string `json:"CUSTOMER_DOC"`
+	CUSTOMER_DOC []CustomerDoc
 	}
 
 
@@ -54,6 +59,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 
 	var CustomerDataObj CustomerData
 	var CustomerDataList []CustomerData
+	var CustomerDocsObj []CustomerDoc
 	var err error
 
 	if len(args) != 5 {
@@ -65,9 +71,15 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	CustomerDataObj.CUSTOMER_NAME = args[1]
 	CustomerDataObj.CUSTOMER_DOB = args[2]
 	CustomerDataObj.CUSTOMER_KYC_FLAG = args[3]
-	CustomerDataObj.CUSTOMER_DOC = args[4]
+	
+	CustomerDocsObj.CUSTOMER_DOC = args[4]
+	
+	Doclength := len(CustomerDocsObj)
+	
+	fmt.Printf("length of Customer Docs :%s\n", Doclength)
 
 	fmt.Printf("Input from user:%s\n", CustomerDataObj)
+		
 
 	customerTxsAsBytes, err := stub.GetState(customerIndexTxStr)
 	if err != nil {
