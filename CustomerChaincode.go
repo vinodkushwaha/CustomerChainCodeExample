@@ -14,8 +14,8 @@ type CustomerChaincode struct {
 }
 
 type CustomerDoc struct {
-CUSTOMER_NAME string `json:"CUSTOMER_NAME"
-CUSTOMER_STRING string `json:"CUSTOMER_STRING"
+DOCUMENT_NAME string `json:"CUSTOMER_NAME"
+DOCUMENT_STRING string `json:"CUSTOMER_STRING"
 }
 
 var customerIndexTxStr = "_customerIndexTxStr"
@@ -25,7 +25,7 @@ type CustomerData struct{
 	CUSTOMER_NAME string `json:"CUSTOMER_NAME"`
 	CUSTOMER_DOB string `json:"CUSTOMER_DOB"`
 	CUSTOMER_KYC_FLAG string `json:"CUSTOMER_KYC_FLAG"`
-	CUSTOMER_DOC []CustomerDoc
+	CUSTOMER_DOC []CustomerDoc `json:"CUSTOMER_DOC"`
 	}
 
 
