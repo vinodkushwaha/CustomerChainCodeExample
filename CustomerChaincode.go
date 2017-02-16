@@ -60,7 +60,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	var CustomerDataObj CustomerData
 	var CustomerDataList []CustomerData
 	var err error
-   	
+   	fmt.Printf("********pankaj CUSTOMER_DOC:%d\n", len(args))
 	
 	if len(args) < 4 {
 		return nil, errors.New("Incorrect number of arguments. Need 4 arguments")
@@ -71,22 +71,26 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	CustomerDataObj.CUSTOMER_NAME = args[1]
 	CustomerDataObj.CUSTOMER_DOB = args[2]
 	CustomerDataObj.CUSTOMER_KYC_FLAG = args[3]
-	fmt.Printf("Details CUSTOMER_DOC:%d\n", len(args))
+	fmt.Printf("********pankaj CUSTOMER_DOC:%s\n", args[4])
 	
-	var docs_count int
-	docs_count = (len(args)-4)/2
+	var number_of_docs int
+	number_of_docs = (len(args)-4)/2
 	
-	var CustomerDocObj [] CustomerDoc
-	//checking for 2 docs
-	for i := 0; i < docs_count-1; i++ {
-		
-		CustomerDocObj[i].DOCUMENT_NAME = args[4]
-		fmt.Printf("DOCUMENT_NAME== CustomerDocObj[i].DOCUMENT_NAME:%s\n", i)
-		CustomerDocObj[i+1].DOCUMENT_STRING = args[5]
-		fmt.Printf("DOCUMENT_STRING=== CustomerDocObj[i+1].DOCUMENT_STRING:%s\n", i+1)
+	
+	var CustomerDocObjects1 []CustomerDoc
+	
+	for i := 0; i < number_of_docs; i++ {
+		var CustomerDocObj CustomerDoc
+		fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAMEC:%d\n",i)
+		fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAMEC:%d\n",number_of_docs)
+		//CustomerDocObj[i] := CustomerDoc{DOCUMENT_NAME: args[4+(i*2)], DOCUMENT_STRING: args[5+(i*2)]}
+		CustomerDocObj.DOCUMENT_NAME = args[4+(i*2)]
+		//fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAMEC:%s\n", CustomerDocObj[i].DOCUMENT_NAME)
+		CustomerDocObj.DOCUMENT_STRING = args[5+(i*2)]
+		CustomerDocObjects1 = append(CustomerDocObjects1,CustomerDocObj)
 	}
 	
-	CustomerDataObj.CUSTOMER_DOC = CustomerDocObj
+	CustomerDataObj.CUSTOMER_DOC = CustomerDocObjects1
 	
 	customerTxsAsBytes, err := stub.GetState(customerIndexTxStr)
 	if err != nil {
@@ -166,8 +170,6 @@ func (t *CustomerChaincode)  GetCustomerDetails(stub shim.ChaincodeStubInterface
 		fmt.Printf("Output from obj.CUSTOMER_NAME: %s\n", obj.CUSTOMER_NAME)
 		fmt.Printf("Output from customer_dob: %s\n", customer_dob)
 		fmt.Printf("Output from obj.CUSTOMER_DOB: %s\n", obj.CUSTOMER_DOB)
-		fmt.Printf("Output from obj.CUSTOMER_DOC: %s\n", obj.CUSTOMER_DOC)
-	
 		if ((obj.CUSTOMER_ID) == customer_id){
 			CustomerTxObjects1 = append(CustomerTxObjects1,obj)
 			//requiredObj = obj
