@@ -74,11 +74,11 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	
 	CustomerDataObj.CUSTOMER_DOC = args[4]
 	
-	CustomerDataObj = CustomerDataObj.CUSTOMER_DOC
+	//CustomerDataObj = CustomerDataObj.CUSTOMER_DOC
 	
-	Doclength := len(CustomerDocsObj)
+	//Doclength := len(CustomerDocsObj)
 	
-	fmt.Printf("length of Customer Docs :%s\n", Doclength)
+	//fmt.Printf("length of Customer Docs :%s\n", Doclength)
 
 	fmt.Printf("Input from user:%s\n", CustomerDataObj)
 		
