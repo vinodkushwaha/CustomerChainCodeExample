@@ -119,7 +119,7 @@ func (t *CustomerChaincode)  GetCustomerDetails(stub shim.ChaincodeStubInterface
 	var objFound bool
 	CustomerTxsAsBytes, err := stub.GetState(customerIndexTxStr)
 	if err != nil {
-		return nil, errors.New("Failed to get Merchant Transactions")
+		return nil, errors.New("Failed to get Customer Records")
 	}
 	var CustomerTxObjects []CustomerData
 	var CustomerTxObjects1 []CustomerData
@@ -139,11 +139,11 @@ func (t *CustomerChaincode)  GetCustomerDetails(stub shim.ChaincodeStubInterface
 	// iterate
 	for i := 0; i < length; i++ {
 		obj := CustomerTxObjects[i]
-		if customer_id == obj.CUSTOMER_ID && customer_name == obj.CUSTOMER_NAME && customer_dob == obj.CUSTOMER_DOB {
+		//if customer_id == obj.CUSTOMER_ID && customer_name == obj.CUSTOMER_NAME && customer_dob == obj.CUSTOMER_DOB {
 			CustomerTxObjects1 = append(CustomerTxObjects1,obj)
 			//requiredObj = obj
 			objFound = true
-		}
+		//}
 	}
 
 	if objFound {
