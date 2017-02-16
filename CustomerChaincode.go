@@ -59,7 +59,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 
 	var CustomerDataObj CustomerData
 	var CustomerDataList [] CustomerData
-	var CustomerDocsObj [] CustomerDoc
+	//var CustomerDocsObj [] CustomerDoc
 	var err error
 
 	if len(args) != 5 {
