@@ -72,7 +72,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	CustomerDataObj.CUSTOMER_DOB = args[2]
 	CustomerDataObj.CUSTOMER_KYC_FLAG = args[3]
 	
-	CustomerDataObj.CUSTOMER_DOC = args[4]
+	//CustomerDataObj.CUSTOMER_DOC = args[4]
 	
 	//CustomerDataObj = CustomerDataObj.CUSTOMER_DOC
 	
