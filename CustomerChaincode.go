@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @vinodkushwaha
- Sign out
- Watch 0
-  Star 0
-  Fork 0 vinodkushwaha/CustomerChainCodeExample
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathCustomerChainCodeExample/CustomerChaincode.go
-189eb5b  just now
-@vinodkushwaha vinodkushwaha Update CustomerChaincode.go
-2 contributors @vinodkushwaha @gulalkumar
-RawBlameHistory     
-196 lines (155 sloc)  5.33 KB
 package main
 
 import (
