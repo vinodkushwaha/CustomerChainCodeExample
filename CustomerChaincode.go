@@ -1,3 +1,21 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @vinodkushwaha
+ Sign out
+ Watch 0
+  Star 0
+  Fork 0 vinodkushwaha/CustomerChainCodeExample
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathCustomerChainCodeExample/CustomerChaincode.go
+189eb5b  just now
+@vinodkushwaha vinodkushwaha Update CustomerChaincode.go
+2 contributors @vinodkushwaha @gulalkumar
+RawBlameHistory     
+196 lines (155 sloc)  5.33 KB
 package main
 
 import (
@@ -81,7 +99,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	for i := 0; i < number_of_docs; i++ {
 		
 		CustomerDocObj[i].DOCUMENT_NAME = args[4]
-		fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAMEC:%s\n", CustomerDocObj[i].DOCUMENT_NAME)
+		fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAME:%s\n", i)
 		CustomerDocObj[i].DOCUMENT_STRING = args[5]
 	}
 	
@@ -193,3 +211,5 @@ func main() {
 		fmt.Printf("Error starting Customer Simple chaincode: %s", err)
 	}
 }
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
