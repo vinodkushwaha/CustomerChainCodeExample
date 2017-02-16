@@ -58,8 +58,8 @@ func (t *CustomerChaincode) Invoke(stub shim.ChaincodeStubInterface, function st
 func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 
 	var CustomerDataObj CustomerData
-	var CustomerDataList []CustomerData
-	var CustomerDocsObj []CustomerDoc
+	var CustomerDataList [] CustomerData
+	var CustomerDocsObj [] CustomerDoc
 	var err error
 
 	if len(args) != 5 {
