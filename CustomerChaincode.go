@@ -193,5 +193,3 @@ func main() {
 		fmt.Printf("Error starting Customer Simple chaincode: %s", err)
 	}
 }
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
