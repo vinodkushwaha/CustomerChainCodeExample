@@ -60,7 +60,7 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	var CustomerDataObj CustomerData
 	var CustomerDataList []CustomerData
 	var err error
-   	fmt.Printf("********pankaj CUSTOMER_DOC:%d\n", len(args))
+   	
 	
 	if len(args) < 4 {
 		return nil, errors.New("Incorrect number of arguments. Need 4 arguments")
@@ -71,18 +71,19 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	CustomerDataObj.CUSTOMER_NAME = args[1]
 	CustomerDataObj.CUSTOMER_DOB = args[2]
 	CustomerDataObj.CUSTOMER_KYC_FLAG = args[3]
-	fmt.Printf("********pankaj CUSTOMER_DOC:%s\n", args[4])
+	fmt.Printf("Details CUSTOMER_DOC:%d\n", len(args))
 	
-	var number_of_docs int
-	number_of_docs = (len(args)-4)/2
+	var docs_count int
+	docs_count = (len(args)-4)/2
 	
 	var CustomerDocObj []CustomerDoc
-	
-	for i := 0; i < number_of_docs; i++ {
+	//checking for 2 docs
+	for i := 0; i < docs_count-1; i++ {
 		
 		CustomerDocObj[i].DOCUMENT_NAME = args[4]
-		fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAME:%s\n", i)
-		CustomerDocObj[i].DOCUMENT_STRING = args[5]
+		fmt.Printf("DOCUMENT_NAME== CustomerDocObj[i].DOCUMENT_NAME:%s\n", i)
+		CustomerDocObj[i+1].DOCUMENT_STRING = args[5]
+		fmt.Printf("DOCUMENT_STRING=== CustomerDocObj[i+1].DOCUMENT_STRING:%s\n", i+1)
 	}
 	
 	CustomerDataObj.CUSTOMER_DOC = CustomerDocObj
