@@ -108,7 +108,7 @@ func (t *CustomerChaincode) Query(stub shim.ChaincodeStubInterface,function stri
 
 	if err != nil {
 		return nil, err
-2	}
+	}
 
 	return resAsBytes, nil
 }
