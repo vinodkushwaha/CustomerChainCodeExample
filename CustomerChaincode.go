@@ -13,19 +13,19 @@ import (
 type CustomerChaincode struct {
 }
 
-type CustomerDoc struct {
-DOCUMENT_NAME string `json:"DOCUMENT_NAME"`
-DOCUMENT_STRING string `json:"DOCUMENT_STRING"`
-}
-
 var customerIndexTxStr = "_customerIndexTxStr"
+
+type CustomerDoc struct {
+    DOCUMENT_NAME string `json:"DOCUMENT_NAME"`
+	DOCUMENT_STRING string `json:"DOCUMENT_STRING"`
+}
 
 type CustomerData struct{
 	CUSTOMER_ID string `json:"CUSTOMER_ID"`
 	CUSTOMER_NAME string `json:"CUSTOMER_NAME"`
 	CUSTOMER_DOB string `json:"CUSTOMER_DOB"`
 	CUSTOMER_KYC_FLAG string `json:"CUSTOMER_KYC_FLAG"`
-	CUSTOMER_DOC [] CustomerDoc `json:"CUSTOMER_DOC"`
+	CUSTOMER_DOC []CustomerDoc
 	}
 
 
@@ -58,13 +58,12 @@ func (t *CustomerChaincode) Invoke(stub shim.ChaincodeStubInterface, function st
 func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 
 	var CustomerDataObj CustomerData
-	var CustomerDataList [] CustomerData
-	//var CustomerDocsObj [] CustomerDoc
-	var doclength int
+	var CustomerDataList []CustomerData
 	var err error
-
-	if len(args) != 5 {
-		return nil, errors.New("Incorrect number of arguments. Need 5 arguments")
+   	fmt.Printf("********pankaj CUSTOMER_DOC:%d\n", len(args))
+	
+	if len(args) < 4 {
+		return nil, errors.New("Incorrect number of arguments. Need 4 arguments")
 	}
 
 	// Initialize the chaincode
@@ -72,22 +71,22 @@ func (t *CustomerChaincode)  RegisterCustomer(stub shim.ChaincodeStubInterface, 
 	CustomerDataObj.CUSTOMER_NAME = args[1]
 	CustomerDataObj.CUSTOMER_DOB = args[2]
 	CustomerDataObj.CUSTOMER_KYC_FLAG = args[3]
+	fmt.Printf("********pankaj CUSTOMER_DOC:%s\n", args[4])
 	
-	//CustomerDataObj.CUSTOMER_DOC = args[4]
+	var number_of_docs int
+	number_of_docs = (len(args)-4)/2
 	
-	//CustomerDataObj = CustomerDataObj.CUSTOMER_DOC
+	var CustomerDocObj []CustomerDoc
 	
-	doclength := (len(args)-4 )/2
-	
-	for i := 0; i < length; i++ {
-	
+	for i := 0; i < number_of_docs; i++ {
+		
+		CustomerDocObj[i].DOCUMENT_NAME = args[4]
+		fmt.Printf("********pankaj CustomerDocObj[i].DOCUMENT_NAMEC:%s\n", CustomerDocObj[i].DOCUMENT_NAME)
+		CustomerDocObj[i].DOCUMENT_STRING = args[5]
 	}
 	
-	fmt.Printf("length of Customer Docs :%s\n", Doclength)
-
-	fmt.Printf("Input from user:%s\n", CustomerDataObj)
-		
-
+	CustomerDataObj.CUSTOMER_DOC = CustomerDocObj
+	
 	customerTxsAsBytes, err := stub.GetState(customerIndexTxStr)
 	if err != nil {
 		return nil, errors.New("Failed to get customer transactions")
